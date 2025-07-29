@@ -8,3 +8,11 @@ class UserCreate(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+class UserResponse(BaseModel):
+    id: str
+    name: str
+    email: EmailStr
+
+    class Config:
+        orm_mode = True
