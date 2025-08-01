@@ -1,17 +1,9 @@
 from pydantic import BaseModel, EmailStr, ConfigDict
 
-class UserCreate(BaseModel):
-    name: str
-    email: EmailStr
-    password: str
-
-class UserLogin(BaseModel):
-    email: EmailStr
-    password: str
-
-class UserResponse(BaseModel):
+class UserResponseModel(BaseModel):
     id: str
     name: str
     email: EmailStr
+    picture: str = ""  # Optional profile image
 
     model_config = ConfigDict(from_attributes=True)

@@ -1,20 +1,11 @@
-from pydantic import BaseModel, EmailStr
-from pydantic import BaseModel, ConfigDict
-from typing import Any
+from typing import Dict, Any
 
-def objectid_str(oid: Any) -> str:
-    return str(oid) if oid else ""
-
-class UserResponseModel(BaseModel):
-    id: str
-    name: str
-    email: EmailStr 
-
-    model_config = ConfigDict(from_attributes=True)
-
-def user_response(user: dict) -> UserResponseModel:
-    return UserResponseModel(
-        id=str(user.get("_id")),
-        name=user.get("name", ""),
-        email=user.get("email", "")
-    )
+def user_document(name: str, email: str, picture: str) -> Dict[str, Any]:
+    """
+    Prepare the user document to be saved in MongoDB.
+    """
+    return {
+        "name": name,
+        "email": email,
+        "picture": picture
+    }
