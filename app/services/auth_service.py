@@ -4,9 +4,10 @@ from google.auth.transport import requests
 from app.db.mongo import db
 from app.schemas.user_schema import UserResponseModel
 from app.core.security import create_access_token
+from app.core.config import settings
 
-# Your actual Google Client ID here
-GOOGLE_CLIENT_ID = "407408718192.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = settings.GOOGLE_CLIENT_ID
+
 
 async def google_authenticate(token: str):
     try:
